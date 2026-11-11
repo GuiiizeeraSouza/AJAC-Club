@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #0c0b09;
+  --color-panel: #16140f;
+  --color-panel-2: #1f1c15;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-gold: #d4af37;
+  --color-gold-soft: #ecd27a;
+  --color-gold-deep: #9c7a1c;
+  --color-cream: #fdf3dc;
+  --color-muted: #a8a294;
+  --color-live: #e5483b;
+
+  --font-sans: var(--font-poppins);
+  --font-display: var(--font-alfa);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-ink);
+}
+
+body {
+  background:
+    radial-gradient(1100px 620px at 12% -12%, rgb(212 175 55 / 0.16), transparent 60%),
+    radial-gradient(900px 520px at 100% 0%, rgb(156 122 28 / 0.12), transparent 60%),
+    var(--color-ink);
+  background-attachment: fixed;
+  color: var(--color-cream);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgb(212 175 55 / 0.4);
+}
+
+/* Barras de rolagem discretas */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.15) transparent;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+}
+.live-dot {
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-in {
+  animation: fade-in 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot,
+  .fade-in {
+    animation: none;
+  }
+}
